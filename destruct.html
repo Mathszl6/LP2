@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construtor & Destructor</title>
+</head>
+<body>
+<script>
+    class minhaClasse {
+        constructor(elem){
+            this.elem = elem;
+            this.elem.addEventListener("click", this.acao);
+        }
+        acao(){
+            document.getElementById("log").innerHTML += "Clicado !<br/>";
+        }
+        destructor(elem){
+            this.elem.removeEventListener("click", this.acao);
+        }
+        }
+        document.addEventListener("DOMContentLoaded", function(even){
+            var obj = new minhaClasse(document.getElementById("bt"));
+            document.getElementById("bt2").addEventListener("click", function(){
+                obj.destructor();
+                delete obj;
+            });
+        });
+</script>    
+</body>
+<button id = "bt">Clique</button>
+<button id = "bt2">Deletar</button>
+<div id = "log"></div>
+</html>
